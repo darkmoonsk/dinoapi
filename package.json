@@ -1,0 +1,27 @@
+{
+  "name": "dinoapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^14.14.31",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
+    "express": "^4.17.1",
+    "mongoose": "^8.1.0"
+  }
+}
