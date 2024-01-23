@@ -13,7 +13,7 @@ app.use(cors());
 
 connectToDatabase();
 
-app.use("/api/", dinosaurRoutes);
+app.use("/api/dinosaurs", dinosaurRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
