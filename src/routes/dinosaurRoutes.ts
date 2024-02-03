@@ -4,7 +4,7 @@ import { dinosaurParamsValidators } from "../validators/DinosaurParamsValidator"
 import dinosaurController from "../controllers/DinosaurController";
 import DinosaurParams from "../models/DinosaurParams";
 import replaceHyphensWithSpaces from "../utils/replaceHyphensWithSpaces";
-import Dinosaur from "../models/Dinosaur";
+import { dinosaurSchema } from "../models/DinosaurSchema";
 
 const router = Router();
 
@@ -16,7 +16,7 @@ router.get("/", dinosaurParamsValidators, async (req: Request, res: Response) =>
   }
 
   const dinosaurParams: DinosaurParams = replaceHyphensWithSpaces(req.query);
-  
+
   try {
     const dinosaurs = await dinosaurController.getAll(dinosaurParams);
     res.status(200).json(dinosaurs);
@@ -57,19 +57,14 @@ router.get("/:name", async (req: Request, res: Response) => {
 
 router.post("/", async (req: Request, res: Response) => {
   const secret = req.headers.secret;
-  const dinosaur = req.body;
-
 
   if (secret !== process.env.API_SECRET) {
     return res.status(403).json({ message: "Forbidden" });
   }
 
-  if(!dinosaur || dinosaur != typeof Dinosaur) {
-    return res.status(400).json({ message: "Invalid data" });
-  }
-
   try {
-    await dinosaurController.create(dinosaur);
+    const dinosaur = await dinosaurSchema.validate(req.body);
+    await dinosaurController.create(req.body);
     res.status(201).json(dinosaur);
   } catch (error) {
     console.error(error);
