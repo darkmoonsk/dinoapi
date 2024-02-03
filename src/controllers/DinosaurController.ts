@@ -2,8 +2,8 @@ import Dinosaur from "../models/Dinosaur";
 import DinosaurRepository from "../repositories/DinosaurRepository";
 
 class DinosaurController {
-    async getAll() {
-        return await DinosaurRepository.findAll();
+    async getAll(filter?: {}) {
+        return await DinosaurRepository.findAll(filter);
     }
 
     async getById(id: string) {
@@ -12,6 +12,10 @@ class DinosaurController {
 
     async getByName(name: string) {
         return await DinosaurRepository.findByName(name);
+    }
+
+    async count(filter?: {}) {
+        return await DinosaurRepository.count(filter);
     }
 
     async create(dinosaur: typeof Dinosaur) {
