@@ -2,8 +2,8 @@
 import Dinosaur from "../models/Dinosaur";
 
 class DinosaurRepository {
-    async findAll() {
-        return await Dinosaur.find();
+    async findAll(filter?: {}) {
+        return await Dinosaur.find(filter || {});
     }
     
     async findById(id: string) {
@@ -20,6 +20,10 @@ class DinosaurRepository {
 
     async findByType(type: string) {
         return await Dinosaur.find({ type: type });
+    }
+
+    async count(filter?: {}) {
+        return await Dinosaur.countDocuments(filter || {});
     }
     
     async create(dinosaur: typeof Dinosaur) {
