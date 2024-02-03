@@ -6,7 +6,7 @@ An API that provides historical data on various dinosaurs that lived on the face
 
 ## Current Status
 
-- The are endpoints are currently available in: https://dinoapi.brunosouzadev.com/api/
+- The endpoints are currently available in: https://dinoapi.brunosouzadev.com/api/
 - The offline DB is currently not available, but it will be available soon.
 
 ## Current endpoints - working in progress (may be changed)
