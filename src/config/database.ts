@@ -6,8 +6,7 @@ const connectDB = async () => {
       process.env.NODE_ENV === "test"
         ? process.env.TEST_DATABASE_URL
         : process.env.DATABASE_URL;
-
-    console.log(connectionString);
+        
     await mongoose.connect(connectionString ?? "", {
       // Opções adicionais podem ser colocadas aqui
       dbName: "dinoapi",
