@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=testuser
+      - MONGO_INITDB_ROOT_PASSWORD=testpassword
+    command: >
+      bash -c "
+        mongod --bind_ip_all &
+        sleep 10 &&
+        mongo --eval \"db = db.getSiblingDB('dinoapi');\"
+      "
