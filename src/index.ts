@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 connectDB().then(() => {
+   app.use("/", express.static("public/build/"));
    app.use("/api/dinosaurs", dinosaurRoutes);
 
    app.listen(PORT, () => {

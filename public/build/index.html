@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.png"><meta name="generator" content="Astro v4.3.2"><title>DinoAPI - Connecting You to the Lost World of Dinosaurs</title><link rel="stylesheet" href="/_astro/index.w4cdjXpM.css" /><script type="module" src="/_astro/hoisted.xqu5k_Nz.js"></script></head> <body>  <main class="mt-4"> <video autoplay loop muted class="fixed top-0 left-0 z-[-1] w-full h-full object-cover" src="videos/dinobg.mp4"></video> <div class="px-3 flex flex-col items-center justify-center w-full h-full"> <div> <img src="images/dinoapi-logo.jpg" alt="Logo" class="w-64 rounded-full shadow-lg opacity-65"> </div> <p class="text-2xl text-white textShadow">
+A simple API for dinosaur data
+</p> <p>
+Current dinos records in the api: <span class="text-zinc-600 textShadow text-lg">18</span> </p> <p>
+This number will increase significantly over time! More than 1000
+        dinosaurs are being catalogued.
+</p> </div> <div class="
+        max-w-[900px] w-full mt-10 bg-black/50 text-white mx-auto
+        p-4 md:p-8 flex flex-col gap-4
+    ">  <h1 class="text-3xl text-green-300 underline">
+Dinosaur data for curious people
+</h1> <div class="flex flex-col gap-2 text-xl"> <p class="textShadow">
+Welcome to DinoAPI! This intuitive API serves as your gateway to the
+          fascinating world of dinosaurs, offering detailed information and
+          insights. Whether you're looking to retrieve a comprehensive list of
+          dinosaur species or delve into the specifics of a particular dinosaur,
+          DinoAPI has you covered.
+</p> <p class="textShadow">
+Designed with versatility in mind, DinoAPI is the perfect tool for
+          crafting your very own dinosaur-themed websites or applications. It's
+          not just for developers; educators, students, and dinosaur enthusiasts
+          can leverage this resource to expand their knowledge and share the
+          wonders of these ancient creatures with others.
+</p> <p class="textShadow">
+Accessibility is at the heart of DinoAPI. It is completely free to
+          use, requires no API key, and emphasizes ease of use. We've tailored
+          the API to ensure the information provided is both accessible and
+          valuable to all users, regardless of their technical background or knowlodge about dinosaur data.
+</p> <div class="my-4"> <h2 class="text-1xl text-green-300 underline">API endpoints:</h2> <ul class="list-disc list-inside mt-4 flex flex-col gap-4"> <li class=""> <a href="/api/dinosaurs" class="text-blue-300 underline"> /api/dinosaurs</a> <p class="textShadow">Get a list of dinosaurs, with their names.</p> <p class="textShadow">You can also specify a query with the follow atributes</p> <ul class="list-disc list-inside ml-6"> <li> <code>period</code> - The period the dinosaur lived in, such as jurassic, late-cretaceous, early-cretaceous, etc.
+</li> <li> <code>diet</code> - The diet of the dinosaur.
+</li> <li> <code>region</code> - The region the dinosaur lived in, such as europe, south-america, asia, etc.
+</li> <li> <code>type</code> - The type of dinosaur, such as terrestrial, aquatic and flyer.
+</li> <li> <code>weight</code> - The weight of the dinosaur.
+</li> <li> <code>height</code> - The height of the dinosaur.
+</li> <li> <code>length</code> - The length of the dinosaur.
+</li> <h3 class="text-lg">For example:</h3> <a href="/api/dinosaurs?period=late-cretaceous&region=south-america&diet=carnivore" class="text-blue-300 underline"> /api/dinosaurs?period=late-cretaceous&amp;region=south-america&amp;diet=carnivore </a> </ul> </li> <li> <a href="/api/dinosaurs/abelisaurus" class="text-blue-300 underline">
+/api/dinosaurs/:name
+</a> <p class="textShadow">
+Get information about a specific dinosaur, by Name.
+</p> <small>You can replace <code>abelisaurus</code> with any dinosaur name.</small> </li> </ul> </div> <h2 class="text-1xl text-green-300 underline">API usage example:</h2> <pre>    <code class=" language-javascript text-base opacity-55">
+        
+// Get a list of all dinosaurs
+// GET /api/dinosaurs
+[{
+&quot;_id&quot;: &quot;65ab56b3978ff91b1c9eb074&quot;,
+&quot;name&quot;: &quot;aardonyx&quot;,
+&quot;weight&quot;: &quot;1700kg&quot;,
+&quot;height&quot;: &quot;2m&quot;,
+&quot;length&quot;: &quot;8.0m&quot;,
+&quot;diet&quot;: &quot;herbivore&quot;,
+&quot;period&quot;: &quot;jurassic&quot;,
+&quot;existed&quot;: &quot;201.3 - 190.8 million years ago&quot;,
+&quot;region&quot;: &quot;south africa&quot;,
+&quot;type&quot;: &quot;terrestrial&quot;,
+&quot;description&quot;: &quot;Aardonyx ...&quot;,
+&quot;image&quot;: &quot;https://brunosouzadev-dinoapi.s3.sa-east-1.amazonaws.com/images/aardonyx.jpg&quot;,
+&quot;isPopular&quot;: false,
+&quot;createdAt&quot;: &quot;2024-01-20T05:14:27.449Z&quot;,
+&quot;updatedAt&quot;: &quot;2024-01-20T05:14:27.449Z&quot;,
+&quot;__v&quot;: 0
+},
+{
+&quot;_id&quot;: &quot;65ab5bbf978ff91b1c9eb076&quot;,
+&quot;name&quot;: &quot;abelisaurus&quot;,
+&quot;weight&quot;: &quot;3000kg&quot;,
+&quot;height&quot;: &quot;2m&quot;,
+&quot;length&quot;: &quot;7.4m&quot;,
+&quot;diet&quot;: &quot;carnivore&quot;,
+&quot;period&quot;: &quot;cretaceous&quot;,
+&quot;existed&quot;: &quot;83.5 - 70.6 million years ago&quot;,
+&quot;region&quot;: &quot;south america&quot;,
+&quot;type&quot;: &quot;terrestrial&quot;,
+&quot;description&quot;: &quot;The large theropod Abelisaurus comahuensis was similar to Albertosaurus from Alberta ...&quot;,
+&quot;image&quot;: &quot;https://brunosouzadev-dinoapi.s3.sa-east-1.amazonaws.com/images/abelisaurus.jpg&quot;,
+&quot;isPopular&quot;: false,
+&quot;createdAt&quot;: &quot;2024-01-20T05:35:59.548Z&quot;,
+&quot;updatedAt&quot;: &quot;2024-01-20T05:35:59.548Z&quot;,
+&quot;__v&quot;: 0
+},
+{
+&quot;_id&quot;: &quot;65ac155886621fdaf2c40bc1&quot;,
+&quot;name&quot;: &quot;abrictosaurus&quot;,
+&quot;weight&quot;: &quot;3kg&quot;,
+&quot;height&quot;: &quot;0.35m&quot;,
+&quot;length&quot;: &quot;1.2m&quot;,
+&quot;diet&quot;: &quot;herbivore/omnivore&quot;,
+&quot;period&quot;: &quot;early jurassic&quot;,
+&quot;existed&quot;: &quot;199 - 196 million years ago&quot;,
+&quot;region&quot;: &quot;south africa&quot;,
+&quot;type&quot;: &quot;terrestrial&quot;,
+&quot;description&quot;: &quot;This dinosaur is known from the fossil remains of only two individuals...&quot;,
+&quot;image&quot;: &quot;https://brunosouzadev-dinoapi.s3.sa-east-1.amazonaws.com/images/abrictosaurus.jpg&quot;,
+&quot;isPopular&quot;: false,
+&quot;createdAt&quot;: &quot;2024-01-20T18:47:52.061Z&quot;,
+&quot;updatedAt&quot;: &quot;2024-01-20T18:47:52.061Z&quot;,
+&quot;__v&quot;: 0
+}, ...]
+    </code>
+</pre>  <h3 class="text-3xl text-green-300 underline">Planned endpoints</h3> <p class="textShadow">We are planning to add more endpoints to the API, such as:</p> <div> <ul class="list-disc list-inside"> <li> <a href="/api/animals" class="text-blue-300 underline"> /api/animals</a>
+- Get a list of prehistorical animals and useful information about them
+</li> <li> <a href="/api/plants" class="text-blue-300 underline"> /api/plants</a>
+- Get a list of prehistorical plants and useful information about them
+</li> <li> <a href="/api/paleontologists" class="text-blue-300 underline"> /api/paleontologists</a>
+- Get a list of paleontologists and useful information about them
+</li> <li> <a href="/api/periods" class="text-blue-300 underline"> /api/periods</a>
+- Get a list of prehistorical periods and useful information about them
+</li> <li> <a href="/api/events" class="text-blue-300 underline"> /api/events</a>
+- Get a list of prehistorical events and useful information about them
+</li> <li> <a href="/api/locations" class="text-blue-300 underline"> /api/locations</a>
+- Get a list of prehistorical locations and useful information about them
+</li> </ul> </div> </div>  </div> </main> <footer class="w-full p-6 bg-black/50 text-white flex justify-around"> <p>© 2024 - Bruno Souza</p> <a href="https://github.com/darkmoonsk">My github</a> <a href="https://brunosouzadev.com">Veja meu blog | See my blog</a> </footer>  </body></html>
