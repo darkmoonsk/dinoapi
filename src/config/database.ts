@@ -1,7 +1,15 @@
 import mongoose from "mongoose";
 
+let isConnected = false;
+
 const connectDB = async () => {
+  if (isConnected) {
+    console.log("=> usando a conexão existente ao MongoDB.");
+    return;
+  }
+
   try {
+    console.log("=> criando uma nova conexão ao MongoDB.")
     const connectionString =
       process.env.NODE_ENV === "test"
         ? process.env.TEST_DATABASE_URL
@@ -11,6 +19,8 @@ const connectDB = async () => {
       // Opções adicionais podem ser colocadas aqui
       dbName: "dinoapi",
     });
+ 
+    isConnected = true;
     console.log("Conectado ao MongoDB com sucesso!");
   } catch (error) {
     console.error("Erro ao conectar ao MongoDB:", error);
