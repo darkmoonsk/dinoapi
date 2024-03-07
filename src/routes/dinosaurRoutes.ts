@@ -1,10 +1,11 @@
 import { Router, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { dinosaurParamsValidators } from "../validators/DinosaurParamsValidator";
-import dinosaurController from "../controllers/DinosaurController";
-import DinosaurParams from "../models/DinosaurParams";
+import { IDinosaur } from "../models/Dinosaur";
 import replaceHyphensWithSpaces from "../utils/replaceHyphensWithSpaces";
 import { dinosaurSchema } from "../models/DinosaurSchema";
+import DinosaurRepository from "../repositories/DinosaurRepository";
+import DinosaurController from "../controllers/DinosaurController";
 
 const router = Router();
 
@@ -15,9 +16,10 @@ router.get("/", dinosaurParamsValidators, async (req: Request, res: Response) =>
     return res.status(400).json({ message: "Invalid query parameters", errors: erros.array() });
   }
 
-  const dinosaurParams: DinosaurParams = replaceHyphensWithSpaces(req.query);
+  const dinosaurParams: IDinosaur = replaceHyphensWithSpaces(req.query);
 
   try {
+    const dinosaurController = new DinosaurController(DinosaurRepository);
     const dinosaurs = await dinosaurController.getAll(dinosaurParams);
     res.status(200).json(dinosaurs);
   } catch (error) {
@@ -33,9 +35,10 @@ router.get("/total", dinosaurParamsValidators, async (req: Request, res: Respons
     return res.status(400).json({ message: "Invalid query parameters", errors: erros.array() });
   }
 
-  const dinosaurParams: DinosaurParams = replaceHyphensWithSpaces(req.query);
+  const dinosaurParams: IDinosaur = replaceHyphensWithSpaces(req.query);
 
   try {
+    const dinosaurController = new DinosaurController(DinosaurRepository);
     const total = await dinosaurController.count(dinosaurParams);
     res.status(200).json({ total });
   } catch (error) {
@@ -47,6 +50,7 @@ router.get("/total", dinosaurParamsValidators, async (req: Request, res: Respons
 router.get("/:name", async (req: Request, res: Response) => {
   try {
     const name = req.params.name.toLowerCase();
+    const dinosaurController = new DinosaurController(DinosaurRepository);
     const dinosaur = await dinosaurController.getByName(name);
     res.status(200).json(dinosaur);
   } catch (error) {
@@ -64,7 +68,8 @@ router.post("/", async (req: Request, res: Response) => {
 
   try {
     const dinosaur = await dinosaurSchema.validate(req.body);
-    await dinosaurController.create(req.body);
+    const dinosaurController = new DinosaurController(DinosaurRepository);
+    await dinosaurController.create(dinosaur);
     res.status(201).json(dinosaur);
   } catch (error) {
     console.error(error);

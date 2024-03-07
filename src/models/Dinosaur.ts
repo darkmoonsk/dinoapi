@@ -1,6 +1,23 @@
 import mongoose from "mongoose";
 
-const dinosaurSchema = new mongoose.Schema({
+export interface IDinosaur {
+  name: string;
+  weight: string;
+  height: string;
+  length: string;
+  diet: string;
+  period: string;
+  existed: string;
+  region: string;
+  type: "terrestrial" | "flying" | "aquatic";
+  description: string;
+  image: string;
+  isPopular: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+ }
+
+const dinosaurSchema = new mongoose.Schema<IDinosaur>({
   name: String,
   weight: String,
   height: String,

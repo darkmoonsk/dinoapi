@@ -1,34 +1,40 @@
-import Dinosaur from "../models/Dinosaur";
-import DinosaurRepository from "../repositories/DinosaurRepository";
+import { IDinosaur } from "../models/Dinosaur";
+import { IDinosaurRepository } from "../repositories/interfaces/IDinosaurRepository";
 
 class DinosaurController {
-    async getAll(filter?: {}) {
-        return await DinosaurRepository.findAll(filter);
+    DinosaurRepository: IDinosaurRepository;
+
+    constructor(DinosaurRepository: IDinosaurRepository) {
+        this.DinosaurRepository = DinosaurRepository;
+    }
+
+    async getAll(filter?: Partial<IDinosaur>) {
+        return await this.DinosaurRepository.findAll(filter);
     }
 
     async getById(id: string) {
-        return await DinosaurRepository.findById(id);
+        return await this.DinosaurRepository.findById(id);
     }
 
     async getByName(name: string) {
-        return await DinosaurRepository.findByName(name);
+        return await this.DinosaurRepository.findByName(name);
     }
 
-    async count(filter?: {}) {
-        return await DinosaurRepository.count(filter);
+    async count(filter?: Partial<IDinosaur>) {
+        return await this.DinosaurRepository.count(filter);
     }
 
-    async create(dinosaur: typeof Dinosaur) {
-        return await DinosaurRepository.create(dinosaur);
+    async create(dinosaur: IDinosaur) {
+        return await this.DinosaurRepository.create(dinosaur);
     }
 
-    async update(id: string, dinosaur: typeof Dinosaur) {
-        return await DinosaurRepository.update(id, dinosaur);
+    async update(id: string, dinosaur: Partial<IDinosaur>) {
+        return await this.DinosaurRepository.update(id, dinosaur);
     }
 
     async delete(id: string) {
-        return await DinosaurRepository.delete(id);
+        return await this.DinosaurRepository.delete(id);
     }
 }
 
-export default new DinosaurController();
+export default DinosaurController;
