@@ -2,6 +2,8 @@
 
 ![dinoapi-banner](https://github.com/darkmoonsk/dinoapi/assets/101902194/f3310efa-2961-4eb3-a978-6c00f6a4fdc6)
 
+Official website: https://dinoapi.brunosouzadev.com
+
 An API that provides historical data on various dinosaurs that lived on the face of the earth. This api, is made with PaleoDB data and others reliable data, but if you found errors you can open an issue with the correct data.
 
 ## Current Status
