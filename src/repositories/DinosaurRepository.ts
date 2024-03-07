@@ -1,24 +1,24 @@
+import Dinosaur, { IDinosaur } from "../models/Dinosaur";
+import { IDinosaurRepository } from "./interfaces/IDinosaurRepository";
 
-import Dinosaur from "../models/Dinosaur";
-
-class DinosaurRepository {
-    async findAll(filter?: {}) {
+class DinosaurRepository implements IDinosaurRepository {
+    async findAll(filter?: {}): Promise<IDinosaur[]> {
         return await Dinosaur.find(filter || {});
     }
     
-    async findById(id: string) {
+    async findById(id: string): Promise<IDinosaur | null> {
         return await Dinosaur.findById(id);
     }
 
-    async findByName(name: string) {
+    async findByName(name: string): Promise<IDinosaur[]> {
         return await Dinosaur.find({ name: name });
     }
 
-    async findByPeriod(period: string) {
+    async findByPeriod(period: string): Promise<IDinosaur[]> {
         return await Dinosaur.find({ period: period });
     }
 
-    async findByType(type: string) {
+    async findByType(type: string): Promise<IDinosaur[]> {
         return await Dinosaur.find({ type: type });
     }
 
@@ -26,15 +26,15 @@ class DinosaurRepository {
         return await Dinosaur.countDocuments(filter || {});
     }
     
-    async create(dinosaur: typeof Dinosaur) {
+    async create(dinosaur: IDinosaur): Promise<IDinosaur> {
         return await Dinosaur.create(dinosaur);
     }
     
-    async update(id: string, dinosaur: typeof Dinosaur) {
+    async update(id: string, dinosaur: Partial<IDinosaur>): Promise<IDinosaur | null> {
         return await Dinosaur.findByIdAndUpdate(id, dinosaur, { new: true });
     }
     
-    async delete(id: string) {
+    async delete(id: string): Promise<IDinosaur | null> {
         return await Dinosaur.findByIdAndDelete(id);
     }
 }
